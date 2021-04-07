@@ -28,3 +28,6 @@ minionsRouter.get('/', (req, res, next) => {
 });
 
 // GET minion by ID
+minionsRouter.get('/:minionId', (req, res, next) => {
+  res.send(req.minion);
+});
