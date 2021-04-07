@@ -7,8 +7,7 @@ const {
   getFromDatabaseById,
   addToDatabase,
   updateInstanceInDatabase,
-  deleteFromDatabasebyId,
-  deleteAllFromDatabase
+  deleteFromDatabasebyId
 } = require('./db');
 
 // If params includes minionId, set the req.minion as the minion or send back a 404 status
@@ -42,4 +41,15 @@ minionsRouter.post('/', (req, res, next) => {
 minionsRouter.put('/:minionId', (req, res, next) => {
   const updatedMinion = updateInstanceInDatabase('minions', req.body);
   res.send(updatedMinion);
+});
+
+// DELETE minion by ID
+minionsRouter.delete('/:minionId', (req, res, next) => {
+  const deletedMinion = deleteFromDatabasebyId('minions', req.params.minionId);
+  if (deletedMinion) {
+    res.status(204);
+  } else {
+    res.status(500);
+  }
+  res.send();
 });
