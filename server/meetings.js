@@ -10,3 +10,7 @@ const {
   deleteFromDatabasebyId,
   deleteAllFromDatabase
 } = require('./db');
+
+meetingsRouter.get('/', (req, res, next) => {
+  res.send(getAllFromDatabase('meetings'));
+});
