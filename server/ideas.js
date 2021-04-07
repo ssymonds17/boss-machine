@@ -36,3 +36,9 @@ ideasRouter.post('/', (req, res, next) => {
   const newIdea = addToDatabase('ideas', req.body);
   res.status(201).send(newIdea);
 });
+
+// PUT request to update idea record
+ideasRouter.put('/:ideaId', (req, res, next) => {
+  const updatedIdea = updateInstanceInDatabase('ideas', req.body);
+  res.send(updatedIdea);
+});
