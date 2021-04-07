@@ -41,14 +41,17 @@ ideasRouter.post('/', checkMillionDollarIdea, (req, res, next) => {
 });
 
 // PUT request to update idea record
-ideasRouter.put('/:ideaId', checkMillionDollarIdea, (req, res, next) => {
+ideasRouter.put('/:id', checkMillionDollarIdea, (req, res, next) => {
   const updatedIdea = updateInstanceInDatabase('ideas', req.body);
+  if (!updatedData) {
+    res.status(404).send();
+  }
   res.send(updatedIdea);
 });
 
 // Delete idea by ID
-ideasRouter.delete('/:ideaId', (req, res, next) => {
-  const deletedIdea = deleteFromDatabasebyId('ideas', req.params.ideaId);
+ideasRouter.delete('/:id', (req, res, next) => {
+  const deletedIdea = deleteFromDatabasebyId('ideas', req.params.id);
   if (deletedIdea) {
     res.status(204);
   } else {
