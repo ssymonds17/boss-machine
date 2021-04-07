@@ -11,7 +11,7 @@ const {
 } = require('./db');
 
 // Import million dollar idea check middleware
-const checkMillionDollarIdea = require('/checkMillionDollarIdea');
+const checkMillionDollarIdea = require('./checkMillionDollarIdea');
 
 // If params includes id, set the req.idea as the idea or send back a 404 status
 ideasRouter.param('id', (req, res, next, id) => {
